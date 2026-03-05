@@ -1,0 +1,61 @@
+name: FachyBounties
+version: 1.0
+main: me.fachybounties.BountyPlugin
+api-version: '1.13'
+depend: [Vault]
+softdepend: [PlaceholderAPI]
+
+commands:
+  bounty:
+    description: Comando principal del sistema de recompensas.
+    usage: /bounty [help|list|set|search|remove|top|history|reload]
+
+permissions:
+
+  fachybounties.set:
+    description: Permite poner recompensas con /bounty set.
+    default: true
+
+  fachybounties.remove:
+    description: Permite retirar la propia recompensa con /bounty remove.
+    default: true
+
+  fachybounties.search:
+    description: Permite buscar recompensas con /bounty search.
+    default: true
+
+  fachybounties.list:
+    description: Permite abrir el menú visual con /bounty list.
+    default: true
+
+  fachybounties.menu:
+    description: Alias de fachybounties.list.
+    default: true
+
+  fachybounties.top:
+    description: Permite ver el top de recompensas con /bounty top.
+    default: true
+
+  fachybounties.history:
+    description: Permite ver el historial de kills con /bounty history.
+    default: true
+
+  fachybounties.admin:
+    description: Permite recargar el plugin y eliminar cualquier bounty.
+    default: op
+
+  fachybounties.bypass.tax:
+    description: No paga comisión al poner una recompensa.
+    default: false
+
+  fachybounties.bypass.cooldown:
+    description: No tiene tiempo de espera entre /bounty set.
+    default: false
+
+  fachybounties.minbounty.500:
+    description: Mínimo de $500 para poner recompensas (rango VIP).
+    default: false
+
+  fachybounties.minbounty.1000:
+    description: Mínimo de $1000 para poner recompensas (rango Admin).
+    default: false
