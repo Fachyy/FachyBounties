@@ -10,6 +10,7 @@
 [![License](https://img.shields.io/badge/License-Custom-red?style=for-the-badge)](LICENSE)
 
 *Pon precio a la cabeza de tus enemigos. El que los mate, cobra.*
+*1.13.x - 1.21.x*
 
 </div>
 
