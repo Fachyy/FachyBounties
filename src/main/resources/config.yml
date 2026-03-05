@@ -1,0 +1,182 @@
+# ==========================================
+#       Configuración de FachyBounties
+#         Compatibilidad: 1.13 - 1.21.x
+#         Spigot, Paper, Purpur y forks
+# ==========================================
+
+settings:
+  # Porcentaje de comisión del servidor (0.10 = 10%) | 0 = desactivado
+  tax-rate: 0.10
+
+  # Recompensa mínima permitida (para todos los jugadores sin rango especial)
+  min-bounty: 100
+
+  # Recompensa máxima permitida | 0 = sin límite
+  max-bounty: 0
+
+  # Tiempo de espera entre /bounty set (segundos)
+  cooldown: 0
+
+  # Ventana de combate (segundos): si la víctima muere de caída/lava/etc.
+  # dentro de este tiempo tras el último golpe, el atacante cobra la recompensa
+  # 0 = solo kills directos cuentan
+  combat-tag-seconds: 10
+
+  # Expiración de bounties (días) | 0 = nunca expiran
+  bounty-expiry-days: 0
+
+  # Anti-farm: horas que deben pasar para que el mismo killer pueda cobrar
+  # la recompensa del mismo jugador otra vez | 0 = desactivado
+  anti-farm-hours: 4
+
+  # Tamaño del historial de kills (máximo de registros guardados)
+  history-size: 50
+
+  # Cuántas entradas mostrar en /bounty history por página
+  history-page-size: 10
+
+  # Formato de fecha en el historial (Java SimpleDateFormat)
+  history-date-format: "dd/MM/yyyy HH:mm"
+
+  # Cuántas entradas mostrar en /bounty top
+  top-size: 5
+
+# ── Mínimos por rango ──────────────────────────────────────────────────────────
+# Asigna un mínimo distinto según el permiso del jugador.
+# Da el permiso "fachybounties.minbounty.X" al rango correspondiente.
+# El plugin usará el mínimo más alto que tenga el jugador.
+# Si el jugador no tiene ninguno, usa settings.min-bounty.
+# Ejemplo: VIP puede poner desde $500, Admin desde $1000
+rank-min-bounty:
+  500: "VIP (fachybounties.minbounty.500)"
+  1000: "Admin (fachybounties.minbounty.1000)"
+
+# ── Notificaciones ─────────────────────────────────────────────────────────────
+notify:
+  # Notificar al objetivo cuando alguien pone una recompensa sobre él
+  on-bounty-placed: true
+
+# ── Efectos al cobrar una recompensa ──────────────────────────────────────────
+effects:
+  # Rayo visual en la ubicación de la víctima (no hace daño)
+  lightning: true
+
+  # Fuegos artificiales en la ubicación de la víctima
+  fireworks: false
+
+  # Broadcast a todo el servidor
+  broadcast-enabled: true
+
+  # Mensaje privado solo al killer (además del broadcast)
+  private-message-killer: true
+
+  # Sonido al killer al cobrar la recompensa
+  sound-killer-enabled: true
+  # Lista de sonidos: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+  sound-killer: "ENTITY_PLAYER_LEVELUP"
+  sound-killer-volume: 1.0
+  sound-killer-pitch: 1.0
+
+# ── Menú visual ───────────────────────────────────────────────────────────────
+menu:
+  title: "&6&lLista de Bounties"
+  head-name: "&c☠ &e%target% &c☠"
+  lore:
+    - "&8▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    - "&7 Recompensa: &a$%amount%"
+    - "&7 Ofertante:  &e%sender%"
+    - "&8▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    - " %status%"
+    - "&8▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    - " &e¡Elimínalo para cobrar!"
+  status-online:  "&a● Conectado"
+  status-offline: "&8○ Desconectado"
+  filler-item:     "GRAY_STAINED_GLASS_PANE"
+  prev-material:   "RED_STAINED_GLASS_PANE"
+  previous-button: "&c&l« Anterior"
+  info-material:   "PAPER"
+  info-text:       "&7Página &e%page% &7/ &e%total%"
+  next-material:   "GREEN_STAINED_GLASS_PANE"
+  next-button:     "&a&lSiguiente »"
+
+# ── Mensajes ───────────────────────────────────────────────────────────────────
+messages:
+  prefix: "&6&l[FachyBounties] &r"
+
+  # --- Permisos ---
+  no-permission-menu:    "&cNo tienes permiso para abrir el menú."
+  no-permission-set:     "&cNo tienes permiso para poner recompensas."
+  no-permission-remove:  "&cNo tienes permiso para eliminar recompensas."
+  no-permission-search:  "&cNo tienes permiso para buscar recompensas."
+  no-permission-admin:   "&cNo tienes permiso de administrador."
+  no-permission-top:     "&cNo tienes permiso para ver el top."
+  no-permission-history: "&cNo tienes permiso para ver el historial."
+
+  # --- Cooldown ---
+  cooldown-active: "&cEspera &e%seconds%s &cantes de poner otra recompensa."
+
+  # --- Validaciones SET ---
+  player-never-joined:    "&cEse jugador nunca se ha conectado al servidor."
+  self-bounty:            "&cNo puedes ponerte una recompensa a ti mismo."
+  bounty-not-enough:      "&cDebes superar la recompensa actual de &e$%top%&c."
+  min-bounty:             "&cLa recompensa mínima es &e$%min%&c."
+  max-bounty:             "&cLa recompensa máxima es &e$%max%&c."
+  not-enough-money:       "&cNo tienes suficiente dinero. Necesitas &e$%total%&c."
+  invalid-amount:         "&cCantidad inválida. Escribe un número positivo."
+  bounty-replaced-refund: "&7Tu recompensa de &e$%amount% &7sobre &e%target% &7fue superada. Se te devolvió el dinero."
+
+  # --- Éxito SET ---
+  bounty-set-success:       "&aRecompensa puesta. Cobraron &e$%total% &a(&e$%tax% &ade comisión)."
+  bounty-set-success-notax: "&aRecompensa de &e$%total% &apuesta sobre &e%target%&a."
+  bounty-broadcast:         "&e%player% &7puso una recompensa de &a$%amount% &7sobre &e%target%&7."
+
+  # --- Notificación al objetivo ---
+  bounty-placed-notify: "&c¡Alguien puso una recompensa de &e$%amount% &csobre tu cabeza! Puesto por &e%placer%&c."
+
+  # --- REMOVE ---
+  no-bounty-found:      "&cEse jugador no tiene recompensas activas."
+  remove-success:       "&7Recompensa retirada. Se te devolvieron &a$%amount%&7."
+  remove-not-yours:     "&cNo pusiste dinero sobre ese jugador."
+  admin-remove-success: "&c(Admin) Recompensa sobre &e%player% &celiminada."
+
+  # --- SEARCH ---
+  search-result:    "&e%player% &7tiene &a$%amount% &7puesto por &e%sender%&7."
+  search-not-found: "&cEse jugador no tiene recompensas activas."
+
+  # --- KILL ---
+  bounty-claimed:        "&6&l¡CAZADO! &e%killer% &7cobró &a$%amount% &7por matar a &e%victim%&7."
+  bounty-claimed-killer: "&a¡Cobraste &e$%amount% &apor eliminar a &e%victim%&a!"
+
+  # --- Anti-farm ---
+  anti-farm-blocked: "&cYa cobraste la recompensa de este jugador recientemente. Espera antes de volver a cobrar."
+
+  # --- Expiración ---
+  bounty-expired:        "&7La recompensa sobre tu cabeza ha expirado."
+  bounty-expired-refund: "&7La recompensa sobre &e%target% &7expiró. Se te devolvieron &a$%amount%&7."
+
+  # --- TOP ---
+  top-header: "&6&l======== Top Recompensas ========"
+  top-entry:  "&e#%pos% &f%player% &8- &a$%amount%"
+  top-empty:  "&7No hay recompensas activas actualmente."
+  top-footer: "&6&l================================="
+
+  # --- HISTORY ---
+  history-header: "&6&l======= Historial de Kills ======="
+  history-entry:  "&e%killer% &7eliminó a &c%victim% &8| &a$%amount% &8| &7%date%"
+  history-empty:  "&7No hay registros en el historial."
+  history-footer: "&6&l=================================="
+
+# ── Menú de ayuda ─────────────────────────────────────────────────────────────
+# Prefijos de permiso: [list] [set] [search] [remove] [top] [history] [admin]
+# Líneas sin prefijo siempre son visibles.
+help:
+  - "&6&l======= FachyBounties ======="
+  - "&e/bounty help &7- Muestra este menú."
+  - "[list]&e/bounty list &7- Ver lista de recompensas."
+  - "[set]&e/bounty set <jugador> <cantidad> &7- Poner una recompensa."
+  - "[search]&e/bounty search <jugador> &7- Buscar la recompensa de alguien."
+  - "[remove]&e/bounty remove <jugador> &7- Retirar tu recompensa."
+  - "[top]&e/bounty top &7- Ver el top de recompensas en el chat."
+  - "[history]&e/bounty history [jugador] &7- Ver historial de kills."
+  - "[admin]&e/bounty reload &7- Recargar configuración (Admin)."
+  - "&6&l==============================="
