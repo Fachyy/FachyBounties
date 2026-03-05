@@ -149,7 +149,7 @@ src/main/
 
 ## 📜 Licencia
 
-© 2025 Fachy — All Rights Reserved. Ver [LICENSE](LICENSE) para más detalles.
+© 2026 Fachy — All Rights Reserved. Ver [LICENSE](LICENSE) para más detalles.
 
 ---
 
