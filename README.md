@@ -2,7 +2,7 @@
 
 # 🎯 FachyBounties
 
-**Sistema de recompensas avanzado para servidores PvP de Minecraft**
+**Sistema de recompensas avanzado para servidores PvP de Minecraft** *1.13.x - 1.21.x*
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.13--1.21.x-brightgreen?style=for-the-badge&logo=minecraft)](https://www.spigotmc.org)
 [![Java](https://img.shields.io/badge/Java-11+-orange?style=for-the-badge&logo=java)](https://www.java.com)
@@ -10,7 +10,6 @@
 [![License](https://img.shields.io/badge/License-Custom-red?style=for-the-badge)](LICENSE)
 
 *Pon precio a la cabeza de tus enemigos. El que los mate, cobra.*
-*1.13.x - 1.21.x*
 
 </div>
 
